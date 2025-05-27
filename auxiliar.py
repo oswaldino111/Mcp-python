@@ -53,7 +53,7 @@ class Auxiliar:
         resposta_usuario = input(valor)
 
         try:
-            self. processar_mensagem(resposta=resposta_usuario)
+            self.processar_mensagem(resposta=resposta_usuario)
 
             #Exemplificar funções recursivas
             return self.__prompt_para_busca_info()
@@ -87,17 +87,44 @@ class Auxiliar:
         for key in dados.keys():
             self.query.update({key: dados[key]})
 
+    ################################################
+    # Modificado por: Oswaldo Veloso
+    # Atualizado em 26/05/2025
+    ################################################
+    def __gera_mensagem_inicial(self, resposta: str):
+        """
+            ### gera a primeira mensagem de interação com o usuario
+            Args:
+                resposta é o retorno da solicitação anterior
+            Resposta:
+                é o que o usuario digitou
+        """
+        adicional = ''
+        if resposta == "não achou":
+            adicional = 'O usuario já realizou uma consulta e não encontrou o veiculo que queria.'
+
+        elif resposta == "achou":
+            adicional = 'O usuario já realizou uma consulta encontrou o veiculo que queria e quer pesquisar outro.'
+
+        # Monta um prompt para solicitar o parâmetro
+        prompt_user = f"""Você está ajudando um usuário a realizar uma busca de veículos. {adicional} Faça uma introdução amigavel para ele!"""
+
+        valor = self.ia.enviaPrompt(comando=prompt_user)
+
+        resposta = input(valor)
+
+        return resposta
 
     ################################################
     # Modificado por: Oswaldo Veloso
     # Atualizado em 24/05/2025
     ################################################
-    def busca_veiculo(self) -> dict:
+    def busca_veiculo(self, resposta: str) -> dict:
         """
             ### Função para realizar a busca de veículos com base nos parâmetros.
         """
 
-        resposta = input(f"Olá, aqui é a busca de veículo, como posso ajudar? ")
+        resposta = self.__gera_mensagem_inicial(resposta=resposta)  
 
         self.processar_mensagem(resposta=resposta)
 

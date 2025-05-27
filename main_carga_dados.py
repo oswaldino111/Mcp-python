@@ -79,7 +79,7 @@ def main():
         ### Inicia o fluxo de criação de dados
     """
     list_cars = list()
-    for _ in range(500):
+    for _ in range(900):
         list_cars.append(cria_carro())
     
     dados = cria_dataframe(list_cars)

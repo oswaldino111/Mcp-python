@@ -41,7 +41,7 @@ async def main(argumentos: dict) -> None:
 # Modificado por: Oswaldo Veloso
 # Atualizado em 25/05/2025
 ################################################
-def main_dados() -> dict:
+def main_dados(resposta: str) -> dict:
     """
         ### Função main de busca no auxiliar
         Args:
@@ -53,7 +53,7 @@ def main_dados() -> dict:
     # Instanciar a ferramenta
     tool = Auxiliar()
 
-    result = tool.busca_veiculo()
+    result = tool.busca_veiculo(resposta=resposta)
     print("Resultado da busca:", result)
 
     return result
@@ -61,14 +61,17 @@ def main_dados() -> dict:
 
 if __name__ == "__main__":
 
+    ultima_resposta = None
+
     while True:
-        argumentos = main_dados()
+        argumentos = main_dados(resposta=ultima_resposta)
 
         retorno = asyncio.run(main(argumentos))
         dados = json.loads(retorno.content[0].text)
 
         if dados["total_carros"] < 1:
-            print("Infelizmente não tenho esse carro, vamos começar novamente!")
+            print("Infelizmente não tenho esse carro!")
+            ultima_resposta = "não achou"
         
         else:
             for carro in dados["carros"]:
@@ -79,3 +82,5 @@ if __name__ == "__main__":
                 print(f"Cor: {carro['cor']} ")
                 print(f"Quilometragem: {carro['quilometragem']} ")
                 print("\n\n")
+
+            ultima_resposta = "achou"
