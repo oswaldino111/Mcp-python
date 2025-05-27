@@ -1,42 +1,43 @@
-Bem-vindo ao projeto MCP
+# Bem-vindo ao projeto MCP
 Este é um exemplo de servidor MCP com integração ao Open AI usando SQLite para busca de carros.
-Como usar
+
+## Como usar
 1. Criar ambiente virtual
 python -m venv .carros
 
 2. Ativar ambiente virtual
 
-No Windows:
+### No Windows:
 
 .carros\Scripts\activate
 
 
-No macOS/Linux:
+### No macOS/Linux:
 
 source .venv/bin/activate
 
-3. Instale as dependências
+## Instale as dependências
 pip install -r requirements.txt  # instalar no ambiente virtual
 
-4. Gere os dados de exemplo
+## Gere os dados de exemplo
 python main_carga_dados.py
 
-5. Substitua no .env sua key do ChatGpt
+## Substitua no .env sua key do ChatGpt
 
-6. Inicie o servidor MCP
+## Inicie o servidor MCP
 python server.py
 
-7. Em outro terminal, inicie o cliente
+## Em outro terminal, inicie o cliente
 python main.py
 
-8. Para encerrar
+## Para encerrar
 Pressione as teclas: Ctrl + C
 
-9. Para testes
+## Para testes
 Na raiz do projeto, execute:
 python -m testes.main
 
-Estrutura do Banco de Dados
+## Estrutura do Banco de Dados
 
 id: Integer
 marca: String
