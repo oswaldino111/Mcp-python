@@ -58,7 +58,23 @@ def main_dados(resposta: str) -> dict:
 
     return result
 
+################################################
+# Modificado por: Oswaldo Veloso
+# Atualizado em 27/05/2025
+################################################
+def mostrar_informacoes(carro):
+    """
+        ### Função para 
+    """
+    print(f"Marca: {carro['marca']} ")
+    print(f"Ano: {carro['ano']} ")
+    print(f"Modelo: {carro['modelo']} ")
+    print(f"Cor: {carro['cor']} ")
+    print(f"Quilometragem: {carro['quilometragem']} ")
+    print("\n\n")
 
+
+# Iniciando
 if __name__ == "__main__":
 
     ultima_resposta = None
@@ -76,11 +92,6 @@ if __name__ == "__main__":
         else:
             for carro in dados["carros"]:
 
-                print(f"Marca: {carro['marca']} ")
-                print(f"Ano: {carro['ano']} ")
-                print(f"Modelo: {carro['modelo']} ")
-                print(f"Cor: {carro['cor']} ")
-                print(f"Quilometragem: {carro['quilometragem']} ")
-                print("\n\n")
+                mostrar_informacoes(carro)
 
             ultima_resposta = "achou"

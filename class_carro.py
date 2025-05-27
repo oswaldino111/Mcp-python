@@ -16,8 +16,8 @@ class CarroCrm:
     locadora = "Locadora do Oswaldo"
     intermediadora = "C2S"
 
-    def __init__(self) -> None:
-        self.db = SQLITE()
+    def __init__(self, conexao= SQLITE()) -> None:
+        self.db = conexao
 
     ################################################
     # Modificado por: Oswaldo Veloso
@@ -51,7 +51,7 @@ class CarroCrm:
 
     ################################################
     # Modificado por: Oswaldo Veloso
-    # Atualizado em 24/05/2025
+    # Atualizado em 27/05/2025
     ################################################
     def buscar_carro(self, filtros: dict) -> list:
         """
