@@ -1,0 +1,7 @@
+# Python
+__pycache__/
+.carros/
+
+# Database
+*.db
+*.sqlite3 
