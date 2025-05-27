@@ -1,0 +1,9 @@
+pandas==2.2.3
+db-sqlite3==0.0.1
+SQLAlchemy==2.0.41
+mcp==1.9.1
+uv
+Faker==37.3.0
+python-dotenv==1.1.0
+requests==2.32.3
+mcp[cli]
